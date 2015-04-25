@@ -1,0 +1,31 @@
+{
+  "name": "kimsufi-crawler",
+  "version": "1.0.0",
+  "description": "A ping utility to get if Kimsufi has specified Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arnab-das/kimsufi-crawler.git"
+  },
+  "keywords": [
+    "kimsufi",
+    "crawler",
+    "low",
+    "cost",
+    "server"
+  ],
+  "author": "Arnab Das",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "config": "^1.12.0",
+    "cron": "^1.0.9",
+    "handlebars": "^3.0.2",
+    "later": "^1.1.6",
+    "moment": "^2.10.2",
+    "mout": "^0.11.0",
+    "request": "^2.55.0"
+  }
+}
