@@ -9,9 +9,10 @@
           moment = require('moment'),
           fs = require('fs'),
 //          cronJob = require('cron').CronJob,
-          util = require('util');
+          util = require('util'),
+          notifier = require('node-notifier');
 
-  var requiredServers = ['KS-2', 'KS-3', 'KS-4'],
+  var requiredServers = ['KS-1'],
           serverTypes = config.get('server-types'),
           datacenters = config.get('datacenters');
 
@@ -66,10 +67,15 @@
       var emailContent = '\nCurrently there are no servers available as per your requirement.';
       if (requiredServerAvailability.length > 0) {
         emailContent = template({servers: requiredServerAvailability});
+        notifier.notify({
+            title: 'KS-1 AVAILABLE',
+            message: "Go Right now to Kimsufi.com"
+        });
       }
       emailContent = ''
               + moment().format('MMMM Do YYYY, h:mm:ss a')
               + emailContent + '\n\n';
+      console.log(emailContent);
       fs.appendFile('response.txt', emailContent, function (err) {
         if (err !== null) {
           console.log('Couldn\'t write to file');
@@ -80,7 +86,7 @@
 
   //var job = new CronJob('* 2 * * * *', checkStatus, null, true, 'America/Los_Angeles');
 
-  var count = 4, sched = later.parse.text('every 2 mins');
+  var count = 240, sched = later.parse.text('every 2 mins');
   var timer = later.setInterval(function () {
     checkStatus();
     if (--count < 0) {
